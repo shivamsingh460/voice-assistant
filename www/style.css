@@ -1,0 +1,201 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #020312, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Orbitron', sans-serif;
+  color: cyan;
+}
+
+/* ------------------ jarvis Core ------------------ */
+.jarvis {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* keeps it above SiriWave if needed */
+}
+
+
+
+.ring {
+   position: absolute; 
+   border-radius: 50%; 
+   border: 2px solid cyan; 
+   box-shadow: 0 0 20px cyan, inset 0 0 20px cyan; 
+   animation: rotate 10s linear infinite, pulse 4s ease-in-out infinite 
+   alternate; 
+  }
+
+.ring1 {
+  width: 300px;
+  height: 300px;
+  border-width: 3px;
+  animation-duration: 8s;
+}
+
+.ring2 {
+  width: 220px;
+  height: 220px;
+  border-color: #00ffff99;
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+.ring3 {
+  width: 140px;
+  height: 140px;
+  border-color: #00ffff55;
+  animation-duration: 16s;
+}
+
+.energy-core { 
+  position: absolute; 
+  width: 40px; 
+  height: 40px; 
+  background: radial-gradient(circle, cyan, #00b3b3, transparent); 
+  border-radius: 50%; 
+  box-shadow: 0 0 40px 15px cyan; 
+  animation: corePulse 2s ease-in-out infinite 
+  alternate;
+ }
+
+.center {
+  position: absolute;
+  text-align: center;
+  color: cyan;
+  text-shadow: 0 0 15px cyan, 0 0 40px cyan;
+}
+
+.center h1 {
+  font-size: 28px;
+  letter-spacing: 5px;
+  animation: textPulse 3s ease-in-out infinite;
+}
+
+/* ------------------ style Bar ------------------ */
+#TextInput {
+  position: fixed;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 60%;
+  background-color: #181818a8;
+  border-color: blue;
+  box-shadow: 0 0 20px rgb(25, 0, 255), inset 0 0 0px rgb(25, 0, 255);
+  border-radius: 8px;
+  color: white;
+  padding: 3px 0px 3px 20px;
+  z-index: 100;
+}
+
+  .input-field {
+    background-color: transparent;
+    border: none;
+    width: 95%;
+    outline: none;
+    color: white;
+    font-family: cursive;
+  }
+  
+  
+  .glow-on-hover {
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: 10px;
+  }
+  
+  .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .glow-on-hover:active {
+    color: #181818a8
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+  
+  .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+/* ------------------ Animations ------------------ */
+@keyframes rotate {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.02); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 20px cyan, inset 0 0 20px cyan; opacity: 0.9; }
+  100% { box-shadow: 0 0 40px cyan, inset 0 0 40px cyan; opacity: 1; }
+}
+
+@keyframes corePulse {
+  0% { transform: scale(1); box-shadow: 0 0 25px 10px cyan; opacity: 0.8; }
+  100% { transform: scale(1.2); box-shadow: 0 0 50px 20px cyan; opacity: 1; }
+}
+
+@keyframes textPulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 15px cyan, 0 0 40px cyan; }
+  50% { opacity: 0.6; text-shadow: 0 0 8px cyan ;}
+}
